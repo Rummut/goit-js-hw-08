@@ -13,7 +13,7 @@ function formFull() {
         formEl.elements.message.value = formObject.message || ""
     }
 }
-
+ 
 const setEmailLocalStorage = (event) => {
     formObject.email = formEl.elements.email.value.trim()
     formObject.message = formEl.elements.message.value.trim()
