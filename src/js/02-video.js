@@ -1,20 +1,19 @@
 import Player from '@vimeo/player';
+import { __esModule } from 'simplelightbox';
+import throttle  from "lodash.throttle";
 
-const player = new Player('handstick', {
-    id: 19231868,
-    width: 640
-});
 
-player.on('play', function() {
-    console.log('played the video!');
-});
+const iframe = document.querySelector('iframe');
+    const player = new Player(iframe);
 
-const onPlay = function(data) {
-    // data is an object containing properties specific to that event
-};
+const localStorageSet = ({ seconds }) => {
+    localStorage.setItem('videoplayer-current-time', `${seconds}`)
+}   
 
-player.on('play', onPlay);
+player.on('timeupdate', throttle(localStorageSet, 1000));
 
-player.on('eventName', function(data) {
-    // data is an object containing properties specific to that event
-});
+const currentTime = localStorage.getItem('videoplayer-current-time')
+
+player.setCurrentTime(currentTime).then(function (seconds) {
+    console.log(`${seconds}`)
+})

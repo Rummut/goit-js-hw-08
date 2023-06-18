@@ -3,8 +3,6 @@ import SimpleLightbox from "simplelightbox";
 import { galleryItems } from './gallery-items';
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
-
 // Change code below this line
 const galleryEl = document.querySelector(".gallery");
 
@@ -13,7 +11,8 @@ const markUp = galleryItems
       ({ preview, original, description }) => {
           const galleryItems = document.createElement('li')
           galleryItems.classList.add("gallery__item")
-          galleryEl.append(galleryItems)
+      galleryEl.append(galleryItems)
+      galleryEl.style.listStyle = "none"
 
           const galleryLink = document.createElement('a')
           galleryLink.classList.add("gallery__link")
@@ -31,4 +30,4 @@ const markUp = galleryItems
 let gallery = new SimpleLightbox('.gallery a', {
   captionsData: "alt",
   captionDelay: 250});
-gallery.on('show.simplelightbox')
+  gallery.on('show.simplelightbox')
