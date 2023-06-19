@@ -24,9 +24,8 @@ formEl.addEventListener("input", throttle(setEmailLocalStorage, 500))
 
 formEl.addEventListener("submit", (event) => {
     event.preventDefault()
+    console.log(JSON.parse(localStorage.getItem('feedback-form-state')))
     localStorage.removeItem('feedback-form-state')
-     console.log("Email:", formEl.elements.email.value)
-    console.log("Message:", formEl.elements.message.value)
     formEl.elements.email.value = ""
     formEl.elements.message.value = ""
 })
